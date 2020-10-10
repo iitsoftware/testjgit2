@@ -1,0 +1,34 @@
+{
+  "monitorpanel" : "stream_{routername}_muelli_system_monitorpanel",
+  "menu" : [ {
+    "menutype" : "static",
+    "title" : "App Configuration",
+    "menu" : [ {
+      "menutype" : "dashboard",
+      "title" : "Authentication",
+      "template" : "authentication.html"
+    }, {
+      "menutype" : "dashboard",
+      "title" : "Dashboard Orchestration",
+      "template" : "crud_dashboards.html"
+    }, {
+      "menutype" : "dashboard",
+      "title" : "Flow Orchestration",
+      "template" : "crud_flows.html"
+    }, {
+      "menutype" : "dashboard",
+      "title" : "Web API",
+      "template" : "crud_routes.html"
+    }, {
+      "menutype" : "dashboard",
+      "title" : "Git Shell",
+      "template" : "gitshell.html",
+      "dynamic" : false
+    } ]
+  }, {
+    "menutype" : "dynamic",
+    "title" : "Routers",
+    "menutemplate" : [ ],
+    "dynamic" : true
+  } ]
+}
