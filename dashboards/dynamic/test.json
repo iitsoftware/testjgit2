@@ -1,0 +1,17 @@
+{
+  "layout" : {
+    "rows" : 15,
+    "minRows" : 0,
+    "columns" : 20,
+    "minColumns" : 0,
+    "cellSize" : 1,
+    "backgroundColor" : "#FFF",
+    "showGrid" : true,
+    "editorCellPadding" : 16
+  },
+  "items" : [ ],
+  "tags" : [ ],
+  "owner" : "admin",
+  "password" : "",
+  "savetimestamp" : 1602338166404
+}
