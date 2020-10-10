@@ -1,0 +1,9 @@
+cc /sys$streams/domains
+delete {app}
+cc /sys$queuemanager/queues
+delete {app}\_flow\_% -p
+delete state_{app}\_% -p
+delete streams_{app}\_% -p
+cc /sys$topicmanager/usage/durables
+delete metaregistry${app}
+save

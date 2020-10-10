@@ -1,0 +1,6 @@
+.DS_Store
+config/git.json
+flowcomponents/*
+flows/generated/*
+.fcupdated-*
+

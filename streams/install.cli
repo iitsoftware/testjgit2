@@ -1,0 +1,56 @@
+cc /sys$streams/domains
+new {app}
+cc /sys$streams/domains/{app}/packages
+new system
+
+cc /sys$streams/domains/{app}/packages/system/streams
+new monitorpanel script-file repository:/{app}/monitorpanel.js
+cc /sys$streams/domains/{app}/packages/system/streams/monitorpanel/dependencies
+new swiftmq.system.streamregistry
+cc /sys$streams/domains/{app}/packages/system/streams/monitorpanel
+set enabled true
+
+cc /sys$streams/domains/{app}/packages/system/streams
+new flowdirectorshell script-file repository:/{app}/shell.js
+cc /sys$streams/domains/{app}/packages/system/streams/flowdirectorshell/parameters
+new monitorpanel-queue value streams_{app}_system_monitorpanel_input
+cc /sys$streams/domains/{app}/packages/system/streams/flowdirectorshell/dependencies
+new {app}.system.monitorpanel
+cc /sys$streams/domains/{app}/packages/system/streams/flowdirectorshell
+set enabled true
+
+cc /sys$streams/domains/{app}/packages/system/streams
+new flowshell script-file repository:/{app}/shell.js
+cc /sys$streams/domains/{app}/packages/system/streams/flowshell/parameters
+new monitorpanel-queue value streams_{app}_system_monitorpanel_input
+new register-at-shells value stream_{routername}_{app}_system_flowdirectorshell
+new register-at-shells-command value flow
+new register-at-shells-description value "Flow Shell"
+cc /sys$streams/domains/{app}/packages/system/streams/flowshell/dependencies
+new swiftmq.flowdirector.cliexecutor
+new {app}.system.flowdirectorshell
+cc /sys$streams/domains/{app}/packages/system/streams/flowshell
+set enabled true
+
+cc /sys$streams/domains/{app}/packages/system/streams
+new flowdeployer script-file repository:/{app}/flowdeployer.js
+cc /sys$streams/domains/{app}/packages/system/streams/flowdeployer/parameters
+new monitorpanel-queue value streams_{app}_system_monitorpanel_input
+new shell-topic value stream_{routername}_{app}_system_flowshell
+new domain value {app}
+new package value flow
+cc /sys$streams/domains/{app}/packages/system/streams/flowdeployer/dependencies
+new {app}.system.flowshell
+cc /sys$streams/domains/{app}/packages/system/streams/flowdeployer
+set enabled true
+
+cc /sys$streams/domains/{app}/packages/system/streams
+new metaregistry script-file repository:/{app}/metaregistry.js
+cc /sys$streams/domains/{app}/packages/system/streams/metaregistry/parameters
+new monitorpanel-queue value streams_{app}_system_monitorpanel_input
+new shell-topic value stream_{routername}_{app}_system_flowshell
+cc /sys$streams/domains/{app}/packages/system/streams/metaregistry/dependencies
+new {app}.system.flowshell
+cc /sys$streams/domains/{app}/packages/system/streams/metaregistry
+set enabled true
+save
