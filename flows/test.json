@@ -3,15 +3,52 @@
   "canvasWidth" : 5000,
   "canvasHeight" : 5000,
   "autoLayoutVertical" : true,
-  "components" : [ ],
+  "components" : [ {
+    "component" : "Stream Interface/Input/Topic Input",
+    "componentid" : "7a8e1bc2-459f-4679-8a7a-1b5b8f43d8c3",
+    "properties" : {
+      "topicname" : {
+        "param" : false,
+        "value" : "t1"
+      }
+    },
+    "position" : {
+      "x" : 466,
+      "y" : 204
+    },
+    "hascode" : false
+  }, {
+    "component" : "Stream Interface/Output/Topic Output",
+    "componentid" : "3b8b94c8-d96c-4dc6-8fc2-99f5cddb692e",
+    "properties" : {
+      "topicname" : {
+        "param" : false,
+        "value" : "t2"
+      }
+    },
+    "position" : {
+      "x" : 465,
+      "y" : 360
+    },
+    "hascode" : false
+  } ],
   "subflowconnectors" : [ ],
-  "links" : [ ],
-  "valid" : false,
+  "links" : [ {
+    "target" : {
+      "componentid" : "3b8b94c8-d96c-4dc6-8fc2-99f5cddb692e",
+      "connectorname" : "In"
+    },
+    "source" : {
+      "componentid" : "7a8e1bc2-459f-4679-8a7a-1b5b8f43d8c3",
+      "connectorname" : "Out"
+    }
+  } ],
+  "valid" : true,
   "refs" : [ ],
   "password" : "",
   "dependencies" : [ ],
   "comments" : [ ],
   "tags" : [ ],
-  "savetimestamp" : 1602338151512,
+  "savetimestamp" : 1602338293009,
   "parameters" : { }
 }
